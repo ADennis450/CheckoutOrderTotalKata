@@ -109,7 +109,7 @@ namespace CheckoutOrderKata
                     }
                 }
                 decimal totalForNomalPricedItems = item.Price * remainingQuantity;
-                decimal itemTotal = totalForNomalPricedItems + totalForDiscountItems;
+                decimal itemTotal = Decimal.Round(totalForNomalPricedItems + totalForDiscountItems, 2);
                 return itemTotal;
             }
             else
@@ -117,24 +117,5 @@ namespace CheckoutOrderKata
                 return item.Price * quantity;
             }
         }
-
-        //public decimal CalculateNewPriceDiscount(ProductItem item, int quantity)
-        //{
-        //    decimal totalForDiscountItems = 0M;
-        //    int totalLimitLeft = (item.DealQuantity * item.Limit);
-        //    int remainingQuantity = quantity;
-        //    double quantityToDealRatio = quantity / item.DealQuantity;
-        //    int timesDealIsMet = Convert.ToInt32(Math.Floor(quantityToDealRatio));
-        //    while(timesDealIsMet > 0 && totalLimitLeft > 0)
-        //    {
-        //        totalForDiscountItems += item.LowerPriceDiscount;
-        //        remainingQuantity -= item.DealQuantity;
-        //        totalLimitLeft -= item.DealQuantity;
-        //        timesDealIsMet -= 1;
-        //    }
-        //    decimal totalForNormalPricedItems = item.Price * remainingQuantity;
-        //    decimal itemTotal = totalForNormalPricedItems + totalForDiscountItems;
-        //    return itemTotal;
-        //}
     }
 }

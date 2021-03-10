@@ -8,8 +8,14 @@ namespace CheckoutOrderKata
 {
     public class ItemScanner
     {
-        List<OrderItem> OrderItemsList = new List<OrderItem>();
-        public List<OrderItem> AddItems(OrderItem item)
+        public ItemScanner()
+        {
+            OrderItemsList = new List<OrderItem>();
+        }
+
+        public List<OrderItem> OrderItemsList;
+
+        public void AddItems(OrderItem item)
         {
             if (OrderItemsList.Exists(x => x.Name == item.Name))
             {
@@ -19,9 +25,8 @@ namespace CheckoutOrderKata
             {
                 OrderItemsList.Add(item);
             }
-            return OrderItemsList;
         }
-        public List<OrderItem> RemoveItems(OrderItem item)
+        public void RemoveItems(OrderItem item)
         {
             if (OrderItemsList.Exists(x => x.Name == item.Name))
             {
@@ -31,7 +36,6 @@ namespace CheckoutOrderKata
                 {
                     OrderItemsList.Remove(removalItem);
                 }
-                return OrderItemsList;
             }
             else
             {
