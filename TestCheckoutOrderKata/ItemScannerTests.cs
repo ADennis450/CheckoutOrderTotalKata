@@ -19,7 +19,7 @@ namespace TestCheckoutOrderKata
             string chipJson = "{'Name': 'chips'}";
             OrderItem orderItem = JsonConvert.DeserializeObject<OrderItem>(chipJson);
             scanner.AddItems(orderItem);
-            Assert.IsTrue(scanner.OrderItemsList.Count > 0);
+            Assert.IsTrue(ShoppingCart.OrderItemList.Count > 0);
             Assert.AreEqual(3.59M, orderItem.TotalPrice);
         }
         [TestMethod]
@@ -35,19 +35,25 @@ namespace TestCheckoutOrderKata
         [TestMethod]
         public void RemoveItem_ShouldRemoveItemFromList()
         {
+            ShoppingCart.OrderItemList.Clear();
             OrderItem chipItem = JsonConvert.DeserializeObject<OrderItem>("{'Name': 'chips'}");
+            OrderItem soupItem = JsonConvert.DeserializeObject<OrderItem>("{'Name': 'soup'}");
             scanner.AddItems(chipItem);
-            scanner.AddItems(chipItem);
-            scanner.RemoveItems(chipItem);
+            scanner.AddItems(soupItem);
+            scanner.RemoveItems(soupItem);
 
-            Assert.IsTrue(scanner.OrderItemsList.Count == 1);
+            Assert.IsTrue(ShoppingCart.OrderItemList.Count == 1);
         }
         [TestMethod]
         public void RemoveItem_ShouldInvalidateSpecial()
         {
-            OrderItem soupItem = JsonConvert.DeserializeObject<OrderItem>("{'Name': 'soup', 'Units': 8}");
-
-            Assert.AreEqual(11.34M, soupItem.TotalPrice);
+            ShoppingCart.OrderItemList.Clear();
+            OrderItem soupItem = JsonConvert.DeserializeObject<OrderItem>("{'Name': 'soup', 'Units': 3}");
+            OrderItem soupItem2 = JsonConvert.DeserializeObject<OrderItem>("{'Name': 'soup', 'Units': 2}");
+            scanner.AddItems(soupItem);
+            scanner.RemoveItems(soupItem2);
+            decimal checkoutTotal = scanner.GetCheckoutTotal();
+            Assert.AreEqual(1.89M, checkoutTotal);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CheckoutOrderKata.Models;
 
-namespace CheckoutOrderKata
+namespace CheckoutOrderKata.CheckoutLogic
 {
     public class ItemClassifier
     {
@@ -13,7 +13,7 @@ namespace CheckoutOrderKata
             switch (name.ToLower().Replace(" ", string.Empty))
             {
                 case "chips":
-                  ChipsItem chipItem = new ChipsItem();
+                    ChipsItem chipItem = new ChipsItem();
                     return chipItem;
                 case "cookie":
                     CookieItem cookieItem = new CookieItem();
@@ -31,17 +31,21 @@ namespace CheckoutOrderKata
                     BeerItem beerItem = new BeerItem();
                     return beerItem;
                 default:
-                    throw new SystemException($"Item {name} is not a scannable item");
+                    ProductItemDetail productDetail = new ProductItemDetail();
+                    throw new ArgumentException(
+                        $"Item {name} is not a scannable item. Please choose from the following items:\n"
+                        + productDetail.GetProductItems());
             }
         }
 
         public static void CheckIfWeightedItem(string name)
         {
-          ProductItem item = GetItemType(name);
-          if(!item.PriceByWeight)
-          {
-            throw new SystemException($"Item {name} is not an item priced by weight");
-          }
+            ProductItem item = GetItemType(name);
+            if (!item.PriceByWeight)
+            {
+                throw new SystemException($"Item {name} is not an item priced by weight");
+            }
         }
-    }
+}
+   
 }

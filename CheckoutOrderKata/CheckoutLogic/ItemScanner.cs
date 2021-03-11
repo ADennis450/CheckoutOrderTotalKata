@@ -3,20 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CheckoutOrderKata.Models;
-using CheckoutOrderKata.CheckoutLogic;
 
-namespace CheckoutOrderKata
+namespace CheckoutOrderKata.CheckoutLogic
 {
     public class ItemScanner
     {
-        public ItemScanner()
-        {
-        }
-        private decimal checkoutTotal { get; set; }
-        
 
         public string AddItems(OrderItem item)
         {
+
             if (ShoppingCart.OrderItemList.Exists(x => x.Name == item.Name))
             {
                 ShoppingCart.OrderItemList.Find(x => x.Name == item.Name).Units += 1;
@@ -25,25 +20,20 @@ namespace CheckoutOrderKata
             {
                 ShoppingCart.OrderItemList.Add(item);
             }
-            return AddItemMessage(item);
+            string checkoutTotal = GetCheckoutTotal().ToString();
+            return checkoutTotal;
         }
 
-        private string AddItemMessage(OrderItem item)
+        public void RemoveItems(OrderItem item)
         {
-            return $"Item {item.Name} was successfully scanned";
-        }
-
-        public string RemoveItems(OrderItem item)
-        {
-            if (ShoppingCart.OrderItemList.Exists(x => x.Name == item.Name))
+            if ( ShoppingCart.OrderItemList.Exists(x => x.Name == item.Name))
             {
                 OrderItem removalItem = ShoppingCart.OrderItemList.Find(x => x.Name == item.Name);
-                removalItem.Units -= item.Units;
+                removalItem.Units -= 1;
                 if(removalItem.Units == 0)
                 {
                     ShoppingCart.OrderItemList.Remove(removalItem);
                 }
-                return $"Item {item.Name} was successfully removed";
             }
             else
             {
@@ -53,6 +43,7 @@ namespace CheckoutOrderKata
        
         public decimal GetCheckoutTotal()
         {
+            decimal checkoutTotal = 0M;
             foreach (OrderItem item in ShoppingCart.OrderItemList)
             {
                 checkoutTotal += item.TotalPrice;

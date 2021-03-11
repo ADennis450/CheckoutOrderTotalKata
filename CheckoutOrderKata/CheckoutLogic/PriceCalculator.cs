@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CheckoutOrderKata.Models;
 using System.Text.RegularExpressions;
-using CheckoutOrderKata.CheckoutLogic;
 
-namespace CheckoutOrderKata
+namespace CheckoutOrderKata.CheckoutLogic
 {
     public class PriceCalculator
     {
