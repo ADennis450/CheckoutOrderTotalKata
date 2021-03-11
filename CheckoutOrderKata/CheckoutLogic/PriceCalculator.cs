@@ -47,7 +47,6 @@ namespace CheckoutOrderKata.CheckoutLogic
             }
             return quantity;
         }
-        //TODO: Refactor duplicate code in calculate item discount
         public decimal CalculatePriceWithDiscounts(ProductItem item, int quantity)
         {
             if (item.DealQuantity > 0)

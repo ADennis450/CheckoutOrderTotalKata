@@ -40,7 +40,7 @@ namespace CheckoutOrderKata.CheckoutLogic
             {
                 throw new ArgumentException($"{item.Name} has not been scanned");
             }
-            
+
         }
        
         public decimal GetCheckoutTotal()
