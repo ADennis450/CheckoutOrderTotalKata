@@ -14,6 +14,7 @@ namespace CheckoutOrderKata.Models
         public abstract int DealQuantity { get;}
         public abstract decimal AdditionalItemDiscountPercent { get;}
         public abstract decimal LowerPriceDiscount { get; }
+        public abstract bool PriceByWeight { get; }
     }
 
     public class ChipsItem : ProductItem
@@ -25,6 +26,7 @@ namespace CheckoutOrderKata.Models
         public override int DealQuantity => 0;
         public override decimal AdditionalItemDiscountPercent => 0M;
         public override decimal LowerPriceDiscount => 0M;
+        public override bool PriceByWeight => false;
     }
 
     public class CookieItem : ProductItem
@@ -36,6 +38,7 @@ namespace CheckoutOrderKata.Models
         public override int DealQuantity => 0;
         public override decimal AdditionalItemDiscountPercent => 0M;
         public override decimal LowerPriceDiscount => 0M;
+        public override bool PriceByWeight => false;
     }
 
     public class SoupItem : ProductItem
@@ -47,6 +50,7 @@ namespace CheckoutOrderKata.Models
         public override int DealQuantity => 2;
         public override decimal AdditionalItemDiscountPercent => 0.50M;
         public override decimal LowerPriceDiscount => 0M;
+        public override bool PriceByWeight => false;
     }
 
     public class BananaItem : ProductItem
@@ -58,6 +62,7 @@ namespace CheckoutOrderKata.Models
         public override int DealQuantity => 0;
         public override decimal AdditionalItemDiscountPercent => 0M;
         public override decimal LowerPriceDiscount => 0M;
+        public override bool PriceByWeight => true;
     }
 
     public class GroundBeefItem : ProductItem
@@ -69,6 +74,7 @@ namespace CheckoutOrderKata.Models
         public override int DealQuantity => 3;
         public override decimal AdditionalItemDiscountPercent => 0.50M;
         public override decimal LowerPriceDiscount => 0M;
+        public override bool PriceByWeight => true;
     }
 
     public class BeerItem : ProductItem
@@ -80,5 +86,6 @@ namespace CheckoutOrderKata.Models
         public override int DealQuantity => 2;
         public override decimal AdditionalItemDiscountPercent => 0M;
         public override decimal LowerPriceDiscount => 10M;
+        public override bool PriceByWeight => false;
     }
 }

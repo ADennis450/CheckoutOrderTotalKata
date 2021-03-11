@@ -31,13 +31,6 @@ namespace TestCheckoutOrderKata
       
             Assert.AreEqual(7.18M, chipItem.TotalPrice);
         }
-        [TestMethod]
-        public void AddItem_ItemPriceShouldBePerPound()
-        {
-            OrderItem bananaItem = JsonConvert.DeserializeObject<OrderItem>("{'Name': 'banana',  Pounds: 2}");
-            scanner.AddItems(bananaItem);
-            Assert.AreEqual(4.76M, bananaItem.TotalPrice);
-        }
 
         [TestMethod]
         public void RemoveItem_ShouldRemoveItemFromList()

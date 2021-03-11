@@ -12,11 +12,12 @@ namespace CheckoutOrderKata
         {
             OrderItemsList = new List<OrderItem>();
         }
-
+        private decimal checkoutTotal { get; set; }
         public List<OrderItem> OrderItemsList;
 
-        public void AddItems(OrderItem item)
+        public string AddItems(OrderItem item)
         {
+
             if (OrderItemsList.Exists(x => x.Name == item.Name))
             {
                 OrderItemsList.Find(x => x.Name == item.Name).Units += 1;
@@ -25,7 +26,19 @@ namespace CheckoutOrderKata
             {
                 OrderItemsList.Add(item);
             }
+            return AddItemMessage(item);
         }
+
+        private string AddItemMessage(OrderItem item)
+        {
+            string checkoutTotal = GetCheckoutTotal();
+            string itemMessage = (
+            $"Order item was successfully scanned \n"
+            + $"Checkout Total: {checkoutTotal}\n"
+            );
+            return itemMessage;
+        }
+
         public void RemoveItems(OrderItem item)
         {
             if (OrderItemsList.Exists(x => x.Name == item.Name))
@@ -42,5 +55,15 @@ namespace CheckoutOrderKata
                 throw new SystemException($"{item.Name} has not been scanned");
             }
         }
+       
+        public string GetCheckoutTotal()
+        {
+            foreach (OrderItem item in OrderItemsList)
+            {
+                checkoutTotal += item.TotalPrice;
+            }
+            return checkoutTotal.ToString();
+        }
     }
+
 }

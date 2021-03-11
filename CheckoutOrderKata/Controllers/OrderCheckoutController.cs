@@ -14,8 +14,12 @@ namespace CheckoutOrderKata.Controllers
     [ApiController]
     public class OrderCheckoutController : ControllerBase
     {
+        public OrderCheckoutController() 
+        {
+             itemScanner = new ItemScanner();
+        }
 
-        ItemScanner itemScanner = new ItemScanner();
+        ItemScanner itemScanner;
 
         [HttpGet]
         public ActionResult Index()
@@ -23,12 +27,20 @@ namespace CheckoutOrderKata.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPost("CreateOrderItem")]
         public ActionResult CreateOrderItem(OrderItem item)
         {
-             itemScanner.AddItems(item);
-             return Content(JsonConvert.SerializeObject(item));
+            string resultMessage;
+            try
+            {
+                resultMessage = itemScanner.AddItems(item);
+            }
+            catch(System.NullReferenceException exception)
+            {
+                resultMessage = "NullReferenceError; Make sure item scanned has the correct properties";
+                Console.WriteLine(exception.Message);
+            }
+            return Content(resultMessage);    
         }
-
     }
 }
