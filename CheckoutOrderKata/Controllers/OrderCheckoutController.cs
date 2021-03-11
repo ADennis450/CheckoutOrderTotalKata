@@ -59,7 +59,10 @@ namespace CheckoutOrderKata.Controllers
             catch (System.NullReferenceException exception)
             {
                 resultMessage = "NullReferenceError; Make sure item scanned has the correct properties";
-                Console.WriteLine(exception.Message);
+            }
+            catch (System.ArgumentException exception)
+            {
+                resultMessage = exception.Message;
             }
             return Content(resultMessage);
         }

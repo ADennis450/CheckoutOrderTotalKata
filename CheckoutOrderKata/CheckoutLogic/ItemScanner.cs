@@ -24,21 +24,23 @@ namespace CheckoutOrderKata.CheckoutLogic
             return checkoutTotal;
         }
 
-        public void RemoveItems(OrderItem item)
+        public string RemoveItems(OrderItem item)
         {
             if ( ShoppingCart.OrderItemList.Exists(x => x.Name == item.Name))
             {
                 OrderItem removalItem = ShoppingCart.OrderItemList.Find(x => x.Name == item.Name);
-                removalItem.Units -= 1;
+                removalItem.Units -= item.Units;
                 if(removalItem.Units == 0)
                 {
                     ShoppingCart.OrderItemList.Remove(removalItem);
                 }
+                return $"Item {item.Name} was successfully removed";
             }
             else
             {
-                throw new SystemException($"{item.Name} has not been scanned");
+                throw new ArgumentException($"{item.Name} has not been scanned");
             }
+            
         }
        
         public decimal GetCheckoutTotal()

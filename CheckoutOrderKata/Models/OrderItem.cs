@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CheckoutOrderKata.Models;
+using CheckoutOrderKata.CheckoutLogic;
 
 namespace CheckoutOrderKata.Models
 {

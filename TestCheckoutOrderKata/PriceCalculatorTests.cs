@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CheckoutOrderKata;
 using CheckoutOrderKata.Models;
+using CheckoutOrderKata.CheckoutLogic;
 using Newtonsoft.Json;
 using System.IO;
 using System.Collections.Generic;
