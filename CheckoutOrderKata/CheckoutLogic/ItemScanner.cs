@@ -20,8 +20,7 @@ namespace CheckoutOrderKata.CheckoutLogic
             {
                 ShoppingCart.OrderItemList.Add(item);
             }
-            string checkoutTotal = GetCheckoutTotal().ToString();
-            return checkoutTotal;
+            return $"Item {item.Name} was successfully scanned";
         }
 
         public string RemoveItems(OrderItem item)
