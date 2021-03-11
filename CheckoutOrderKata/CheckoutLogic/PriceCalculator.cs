@@ -11,15 +11,8 @@ namespace CheckoutOrderKata.CheckoutLogic
     {
         public decimal GetItemFinalPrice(string itemName, int units, double weight, bool sale)
         {
-            int wholelbs = Convert.ToInt32(weight);
             ProductItem item = ItemClassifier.GetItemType(itemName);
-            decimal itemTotal = CalculateItemPrice(item, itemName, sale, units, weight);
-            return itemTotal;
-        }
-
-        public decimal CalculateItemPrice(ProductItem item, string itemName, bool sale, int units = 1, double weight = 0)
-        {
-            int quantity = GetItemQuantity(units, weight, itemName);
+            double quantity = GetItemQuantity(units, weight, itemName);
             MarkdownPrice(item, sale);
             decimal itemTotal = CalculatePriceWithDiscounts(item, quantity);
             return itemTotal;
@@ -33,28 +26,28 @@ namespace CheckoutOrderKata.CheckoutLogic
             }
         }
 
-        public int GetItemQuantity(int units, double pounds, string itemName)
+        public double GetItemQuantity(int units, double pounds, string itemName)
         {
-            int quantity = 0;
+            double quantity = 0;
             if(pounds > 0 )
             {
-                ItemClassifier.CheckIfWeightedItem(itemName);
-                quantity = Convert.ToInt32(Math.Floor(pounds));
+               quantity = pounds;
             }
             else
             {
-                quantity = units;
+                quantity = Convert.ToDouble(units);
             }
             return quantity;
         }
-        public decimal CalculatePriceWithDiscounts(ProductItem item, int quantity)
+
+        public decimal CalculatePriceWithDiscounts(ProductItem item, double quantity)
         {
             if (item.DealQuantity > 0)
             {
                 decimal totalForDiscountItems = 0M;
                 double quantityToDealRatio = quantity / item.DealQuantity;
                 int totalLimitLeft = (item.DealQuantity * item.Limit);
-                int remainingQuantity = quantity;
+                int remainingQuantity = Convert.ToInt32(Math.Floor(quantity));
                 int timesDealIsMet = Convert.ToInt32(Math.Floor(quantityToDealRatio));
                 if (item.AdditionalItemDiscountPercent > 0)
                 {
@@ -82,7 +75,7 @@ namespace CheckoutOrderKata.CheckoutLogic
             }
             else
             {
-                return item.Price * quantity;
+                return item.Price * Convert.ToDecimal(quantity);
             }
         }
     }

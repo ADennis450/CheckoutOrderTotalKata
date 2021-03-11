@@ -18,13 +18,15 @@ namespace TestCheckoutOrderKata
         {    
             SoupItem soupItem = new SoupItem();
             calc.MarkdownPrice(soupItem, true);
+
             Assert.AreEqual(1.59M, soupItem.Price);
         }
         [TestMethod]
         public void AddItem_ItemPriceShouldBePerPound()
         {
             BananaItem bananaItem = new BananaItem();
-            decimal itemTotal = calc.CalculateItemPrice(bananaItem, "banana", true, 0, 3 );
+            decimal itemTotal = calc.GetItemFinalPrice("banana",2, 3, false);
+
             Assert.AreEqual(7.14M, itemTotal);
         }
         [TestMethod]

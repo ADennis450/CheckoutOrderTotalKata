@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using CheckoutOrderKata.Models;
 using CheckoutOrderKata.CheckoutLogic;
-using Newtonsoft.Json;
 using System.Web;
 
 namespace CheckoutOrderKata.Controllers
@@ -34,7 +33,7 @@ namespace CheckoutOrderKata.Controllers
             string resultMessage;
             try
             {
-                ItemClassifier.CheckIfWeightedItem(item.Name);
+                ItemClassifier.CheckIfWeightedItem(item);
                 resultMessage = itemScanner.AddItems(item);
             }
             catch(System.NullReferenceException)
@@ -54,9 +53,10 @@ namespace CheckoutOrderKata.Controllers
             string resultMessage;
             try
             {
+                ItemClassifier.CheckIfWeightedItem(item);
                 resultMessage = itemScanner.RemoveItems(item);
             }
-            catch (System.NullReferenceException exception)
+            catch (System.NullReferenceException)
             {
                 resultMessage = "NullReferenceError; Make sure item scanned has the correct properties";
             }

@@ -38,12 +38,16 @@ namespace CheckoutOrderKata.CheckoutLogic
             }
         }
 
-        public static void CheckIfWeightedItem(string name)
+        public static void CheckIfWeightedItem(OrderItem item)
         {
-            ProductItem item = GetItemType(name);
-            if (!item.PriceByWeight)
+            ProductItem product = GetItemType(item.Name);
+            if (!product.PriceByWeight && item.Weight > 0)
             {
-                throw new SystemException($"Item {name} is not an item priced by weight");
+                throw new ArgumentException($"Item {item.Name} is not an item priced by weight");
+            }
+            else if(product.PriceByWeight && item.Weight < 1)
+            {
+                throw new ArgumentException($"Item {item.Name} has to have a weight greater than 0");
             }
         }
 }

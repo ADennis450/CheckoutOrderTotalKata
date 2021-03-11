@@ -21,6 +21,7 @@ namespace TestCheckoutOrderKata
             OrderItem orderItem = JsonConvert.DeserializeObject<OrderItem>(chipJson);
             scanner.AddItems(orderItem);
             Assert.IsTrue(ShoppingCart.OrderItemList.Count > 0);
+
             Assert.AreEqual(3.59M, orderItem.TotalPrice);
         }
         [TestMethod]
@@ -29,7 +30,7 @@ namespace TestCheckoutOrderKata
             OrderItem chipItem = JsonConvert.DeserializeObject<OrderItem>("{'Name': 'chips'}");
             scanner.AddItems(chipItem);
             scanner.AddItems(chipItem);
-      
+
             Assert.AreEqual(7.18M, chipItem.TotalPrice);
         }
 
@@ -54,6 +55,7 @@ namespace TestCheckoutOrderKata
             scanner.AddItems(soupItem);
             scanner.RemoveItems(soupItem2);
             decimal checkoutTotal = scanner.GetCheckoutTotal();
+
             Assert.AreEqual(1.89M, checkoutTotal);
         }
     }
