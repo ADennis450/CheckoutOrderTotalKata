@@ -14,13 +14,13 @@ Use the localhost url returned to the terminal as the base url for the API.
 There are 4 commands for the CheckoutOrderKata
 
 1. Getting products available (GET)
- localhost:<port>/api/product/GetProductsAvailable
+  /api/product/GetProductsAvailable
 2. Creating the order item (POST)
- localhost:<port>/api/ordercheckout/CreateOrderItem
+  /api/ordercheckout/CreateOrderItem
 3. Removing the order item (POST)
- localhost:<port>/api/ordercheckout/RemoveOrderItem
+  /api/ordercheckout/RemoveOrderItem
 4. Getting the checkout total (GET)
- localhost:<port>/api/ordercheckout/GetCheckoutTotal
+  /api/ordercheckout/GetCheckoutTotal
 
 Detailed information on how to configure these api calls can be found at this link [Postman Documentation](https://documenter.getpostman.com/view/4352737/Tz5p6dS4)
 
