@@ -1,5 +1,5 @@
 # CheckoutOrderTotalKata
-An API for a grocery point-of-sales system
+This project is an API for a mock grocery point of sales sytem. The API allows for items to be scanned, removed and for the total checkout price to be retrieved.
 
 ## Requirements
 [.NET core 3.1.10](https://dotnet.microsoft.com/download)
