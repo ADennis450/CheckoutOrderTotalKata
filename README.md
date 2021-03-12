@@ -35,7 +35,7 @@ To start the API navigate to the project directory (../CheckoutOrderKata/Checkou
 
 #### Detailed information on how to configure these api calls can be found at this link [Postman Documentation](https://documenter.getpostman.com/view/4352737/Tz5p6dS4)
 
-The table below gives a summary of the item names that can be added and the attributes for those items. This information can also be gathered from using the get request 'api/ordercheckout/GetProductsAvailable'.    
+The table below gives a summary of the item names that can be added and the properties for those items. This information can also be gathered from using the get request 'api/ordercheckout/GetProductsAvailable'.    
 
 Name | Weight | Markdown | Discounts | Discount Description
 ---- | ------ | ---- | ----------| --------------------
