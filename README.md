@@ -4,7 +4,7 @@ An API for a grocery point-of-sales system
 ## Requirements
 .NET core 3.1.10
 
-## Usage
+## How to use
 To start the API navigate to the project directory (../CheckoutOrderKata/CheckoutOrderKata) and execute the following commands
 * dotnet build
 * dotnet run
