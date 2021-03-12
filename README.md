@@ -9,8 +9,20 @@ An API for a grocery point-of-sales system
 To start the API navigate to the project directory (../CheckoutOrderKata/CheckoutOrderKata) and execute the following commands
 * dotnet build
 * dotnet run
+Use the localhost url returned to the terminal as the base url for the API.
 
-Use the localhost url returned to the terminal as the base url for the API. Detailed information on how to configure the api call can be found at this link [Postman Documentation](https://documenter.getpostman.com/view/4352737/Tz5p6dS4)
+There are 4 commands for the CheckoutOrderKata
+
+1. Getting products available (GET)
+ https://localhost:5001/api/product/GetProductsAvailable
+2. Creating the order item (POST)
+ https://localhost:5001/api/ordercheckout/CreateOrderItem
+3. Removing the order item (POST)
+ https://localhost:5001/api/ordercheckout/RemoveOrderItem
+4. Getting the checkout total (GET)
+ https://localhost:5001/api/ordercheckout/GetCheckoutTotal
+
+Detailed information on how to configure these api calls can be found at this link [Postman Documentation](https://documenter.getpostman.com/view/4352737/Tz5p6dS4)
 
 The table below gives a summary of the item names that can be added and the attributes for those items. This information can also be gathered from using the get request 'api/ordercheckout/GetProductsAvailable'.    
 
