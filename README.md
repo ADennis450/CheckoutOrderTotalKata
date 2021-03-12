@@ -9,6 +9,7 @@ An API for a grocery point-of-sales system
 To start the API navigate to the project directory (../CheckoutOrderKata/CheckoutOrderKata) and execute the following commands
 * dotnet build
 * dotnet run
+
 Use the localhost url returned to the terminal as the base url for the API.
 
 There are 4 commands for the CheckoutOrderKata
