@@ -9,9 +9,11 @@ To start the API navigate to the project directory (../CheckoutOrderKata/Checkou
 * dotnet build
 * dotnet run
 
-Use the localhost url returned to the terminal as the base url for the api.Information on how to configure the api call can be found at this link [Postman Documentation](https://documenter.getpostman.com/view/4352737/Tz5p6dS4)
+Use the localhost url returned to the terminal as the base url for the API. Use any preferred tool to call the endpoint. Detailed information on how to configure the api call can be found at this link [Postman Documentation](https://documenter.getpostman.com/view/4352737/Tz5p6dS4)
 
-Name | Weight | Sale | Discounts | Discount Description
+The table below gives a summary of the item names that can be added and the attributes for those items. This information can also be gathered from using the get request 'api/ordercheckout/GetProductsAvailable'.    
+
+Name | Weight | Markdown | Discounts | Discount Description
 ---- | ------ | ---- | ----------| --------------------
 chips | :x: | :x: | :x: |
 cookie | :x: | :heavy_check_mark: | :x: | 
