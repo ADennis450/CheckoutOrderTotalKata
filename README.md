@@ -4,6 +4,11 @@ This project is an API for a mock grocery point of sales sytem. The API allows f
 ## Requirements
 [.NET core 3.1.10](https://dotnet.microsoft.com/download)
 
+### Nuget Packages to Run Unit Tests
+coverlet.collector --version 1.3.0
+Microsoft.NET.Test.Sdk --version 16.7.1
+MSTest.TestAdapter --version 2.1.1
+MSTest.TestFramework --version 2.1.1
 
 ## How to Use
 To start the API navigate to the project directory (../CheckoutOrderKata/CheckoutOrderKata) and execute the commands `dotnet build` and `dotnet run`. Use the localhost url returned to the terminal as the base url for the API.
