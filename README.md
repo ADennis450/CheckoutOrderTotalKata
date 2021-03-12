@@ -15,19 +15,19 @@ There are 4 commands for the CheckoutOrderKata
 
 1. Getting products available (GET)
 
-  /api/product/GetProductsAvailable
+  `https://localhost:5001/api/product/GetProductsAvailable`
 
 2. Creating the order item (POST)
   
-  /api/ordercheckout/CreateOrderItem
+  `https://localhost:5001/api/ordercheckout/CreateOrderItem`
 
 3. Removing the order item (POST)
 
-  /api/ordercheckout/RemoveOrderItem
+  `https://localhost:5001/api/ordercheckout/RemoveOrderItem`
 
 4. Getting the checkout total (GET)
 
-  /api/ordercheckout/GetCheckoutTotal
+  `https://localhost:5001/api/ordercheckout/GetCheckoutTotal`
 
 Detailed information on how to configure these api calls can be found at this link [Postman Documentation](https://documenter.getpostman.com/view/4352737/Tz5p6dS4)
 
